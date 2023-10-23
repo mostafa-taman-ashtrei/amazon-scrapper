@@ -2,16 +2,21 @@
 
 import { FormEvent, useState } from "react";
 
+import { AddProduct } from "@/lib/actions/products";
+
 const UrlSearchInput = () => {
     const [searchPrompt, setSearchPrompt] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        console.log("sdfdsf");
 
         try {
             setIsLoading(true);
             // Scrape the product page
+            console.log({ searchPrompt });
+            AddProduct(searchPrompt);
         } catch (error) {
             throw new Error("Unable to scrape this amazon product");
         } finally {
