@@ -1,7 +1,11 @@
 import ImageCarousel from "@/Components/Home/ImageCarousel";
+import ProductCard from "@/Components/Product/ProductCard";
 import UrlSearchInput from "@/Components/Home/UrlSearchInput";
+import { getAllProducts } from "@/lib/actions/products";
 
-const Home: React.FC = () => {
+const Home: React.FC = async () => {
+  const allProducts = await getAllProducts();
+
   return (
     <>
       <section className="px-6 md:px-20 py-24">
@@ -26,9 +30,9 @@ const Home: React.FC = () => {
         <h2 className="section-text">Trending</h2>
 
         <div className="flex flex-wrap gap-x-8 gap-y-16">
-          <p>Product 1</p>
-          <p>Product 2</p>
-          <p>Product 3</p>
+          {allProducts?.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
         </div>
       </section>
     </>

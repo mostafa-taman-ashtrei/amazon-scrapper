@@ -4,9 +4,10 @@ import { getAveragePrice, getHighestPrice, getLowestPrice } from "@/lib/utils/Pr
 
 import Product from "@/lib/models/Product";
 import { connectToDb } from "@/lib/DB/connectToDb";
+import { revalidatePath } from "next/cache";
 import { scrapeAmazonProduct } from "@/lib/scraper";
 
-export const AddProduct = async (productUrl: string) => {
+export const AddOrUpdateProduct = async (productUrl: string) => {
     if (!productUrl) return;
 
     try {
@@ -39,8 +40,31 @@ export const AddProduct = async (productUrl: string) => {
             { upsert: true, new: true }
         );
 
-        console.log({ newProduct });
+        revalidatePath(`/products/${newProduct._id}`);
     } catch {
         throw new Error(`Failed to process product ${productUrl}`);
     }
 };
+
+export async function getProductById(productId: string) {
+    try {
+        connectToDb();
+        const product = await Product.findOne({ _id: productId });
+
+        if (!product) return null;
+        return product;
+    } catch {
+        throw new Error(`Failed to fetch product ${productId}`);
+    }
+}
+
+export async function getAllProducts() {
+    try {
+        connectToDb();
+        const products = await Product.find();
+
+        return products;
+    } catch {
+        throw new Error("Failed to fetch all products");
+    }
+}
