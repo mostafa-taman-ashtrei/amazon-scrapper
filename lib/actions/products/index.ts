@@ -61,7 +61,7 @@ export const getProductById = async (productId: string) => {
 export const getAllProducts = async () => {
     try {
         connectToDb();
-        const products = await Product.find();
+        const products = await Product.find({}, null, { sort: { updatedAt: -1 } });
 
         return products;
     } catch {
