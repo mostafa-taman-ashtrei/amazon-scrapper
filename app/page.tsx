@@ -26,13 +26,16 @@ const Home: React.FC = async () => {
         </div>
       </section>
 
-      <section className="trending-section">
-        <h2 className="section-text">Trending</h2>
+      <section className="latest-section">
+        <div className="py-14 flex flex-col gap-2 w-full">
+          <p className="section-text"><span className="text-primary">Latest</span> Products</p>
+          <hr />
 
-        <div className="flex flex-wrap gap-x-8 gap-y-16">
-          {allProducts?.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
+          <div className="flex flex-wrap gap-10 mt-5 w-full">
+            {allProducts?.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
         </div>
       </section>
     </>
