@@ -46,7 +46,7 @@ export const AddOrUpdateProduct = async (productUrl: string) => {
     }
 };
 
-export async function getProductById(productId: string) {
+export const getProductById = async (productId: string) => {
     try {
         connectToDb();
         const product = await Product.findOne({ _id: productId });
@@ -56,9 +56,9 @@ export async function getProductById(productId: string) {
     } catch {
         throw new Error(`Failed to fetch product ${productId}`);
     }
-}
+};
 
-export async function getAllProducts() {
+export const getAllProducts = async () => {
     try {
         connectToDb();
         const products = await Product.find();
@@ -67,4 +67,20 @@ export async function getAllProducts() {
     } catch {
         throw new Error("Failed to fetch all products");
     }
-}
+};
+
+export const getSimilarPricedProducts = async (productId: string) => {
+    try {
+        connectToDb();
+
+        const currentProduct = await Product.findById(productId);
+
+
+        if (!currentProduct) return null;
+        const similarProducts = await Product.find({ averagePrice: { $lte: currentProduct.averagePrice }, _id: { $ne: currentProduct._id } }).limit(3);
+
+        return similarProducts;
+    } catch {
+        throw new Error("Failed to fetch similar products");
+    }
+};

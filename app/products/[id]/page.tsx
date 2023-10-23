@@ -1,10 +1,13 @@
+import { getProductById, getSimilarPricedProducts } from "@/lib/actions/products";
+
 import Image from "next/image";
 import Link from "next/link";
 import PriceCard from "@/Components/Product/PriceCard";
+import ProductCard from "@/Components/Product/ProductCard";
 import { ProductType } from "@/types/product";
 import TextModal from "@/Components/General/TextModal";
 import { formatNumber } from "@/lib/utils/Numbers";
-import { getProductById } from "@/lib/actions/products";
+import { getPriceDifference } from "@/lib/utils/PriceFunctions";
 import { redirect } from "next/navigation";
 
 interface props {
@@ -15,6 +18,8 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
     const product: ProductType | null = await getProductById(params.id);
 
     if (!product || product == null) redirect("/");
+
+    const similarProducts = await getSimilarPricedProducts(params.id);
 
     return (
         <div className="product-container">
@@ -55,7 +60,7 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
                             <div className="product-btn">
                                 <Image
                                     src="/assets/icons/description.svg"
-                                    alt="buy now"
+                                    alt={`${product.title} description`}
                                     width={20}
                                     height={20}
                                 />
@@ -84,42 +89,15 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
                             <p className="text-[34px] text-secondary font-bold">
                                 {product.currency} {formatNumber(product.currentPrice)}
                             </p>
-                            <p className="text-[21px] text-black opacity-50 line-through">
-                                {product.currency} {formatNumber(product.originalPrice)}
-                            </p>
                         </div>
 
 
-                        <div className="flex flex-col gap-4">
-                            <div className="flex gap-3">
-                                <div className="product-stars">
-                                    <Image
-                                        src="/assets/icons/star.svg"
-                                        alt="star"
-                                        width={16}
-                                        height={16}
-                                    />
-                                    <p className="text-sm text-primary-orange font-semibold">
-                                        {product.stars || "25"}
-                                    </p>
-                                </div>
-
-                                <div className="product-reviews">
-                                    <Image
-                                        src="/assets/icons/review-bubble.svg"
-                                        alt="comment"
-                                        width={16}
-                                        height={16}
-                                    />
-                                    <p className="text-sm text-secondary font-semibold">
-                                        {product.reviewsCount} Reviews
-                                    </p>
-                                </div>
-                            </div>
-
-                            <p className="text-sm text-black opacity-50">
-                                <span className="text-primary-green font-semibold">93% </span> of
-                                buyers have recommeded this.
+                        <div className="flex flex-row gap-4 align-top">
+                            <p className="text-[21px] text-black opacity-50 line-through">
+                                {product.currency} {formatNumber(product.originalPrice)}
+                            </p>
+                            <p>
+                                {getPriceDifference(product.originalPrice, product.currentPrice)}
                             </p>
                         </div>
                     </div>
@@ -146,12 +124,23 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
                                 iconSrc="/assets/icons/low-price-arrow.svg"
                                 value={`${product.currency} ${formatNumber(product.lowestPrice)}`}
                             />
-
-
                         </div>
                     </div>
                 </div>
             </div>
+
+            {similarProducts && similarProducts?.length > 0 && (
+                <div className="py-14 flex flex-col gap-2 w-full">
+                    <p className="section-text">Products With <span className="text-primary-green">Similar</span> Or <span className="text-primary">Lower</span> Prices</p>
+                    <hr />
+
+                    <div className="flex flex-wrap gap-10 mt-7 w-full">
+                        {similarProducts.map((product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

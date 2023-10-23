@@ -19,8 +19,6 @@ export interface ProductType {
     discountRate: number;
     description: string;
     category: string;
-    reviewsCount: number;
-    stars: number;
     isOutOfStock: Boolean;
     users?: UserType[];
 };
