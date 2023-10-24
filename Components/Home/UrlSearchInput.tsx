@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 
 import { AddOrUpdateProduct } from "@/lib/actions/products";
-import { isValidAmazonProductURL } from "@/lib/utils/Urls";
+import { isValidAmazonProductURL } from "@/lib/utils/Validation";
 import toast from "react-hot-toast";
 
 const UrlSearchInput = () => {
