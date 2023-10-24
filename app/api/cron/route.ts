@@ -7,7 +7,7 @@ import { connectToDb } from "@/lib/DB/connectToDb";
 import { scrapeAmazonProduct } from "@/lib/scraper";
 import { sendEmail } from "@/lib/actions/nodemailer";
 
-export const maxDuration = 300; // This function can run for a maximum of 300 seconds
+// export const maxDuration = 300; // This function can run for a maximum of 300 seconds on the pro plan of vercel
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
