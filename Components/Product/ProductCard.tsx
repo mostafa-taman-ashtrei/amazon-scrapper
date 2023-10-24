@@ -22,7 +22,7 @@ const ProductCard: React.FC<props> = ({ product }) => {
             <div className="flex flex-col gap-3">
                 <h3 className="product-title">{product.title}</h3>
 
-                <p className="text-black text-lg font-semibold">
+                <p className="text-black dark:text-gray-400 text-lg font-semibold">
                     <span>{product?.currency}</span>
                     <span>{product?.currentPrice}</span>
                 </p>

@@ -21,11 +21,11 @@
   }
 
   .head-text {
-    @apply mt-4 text-6xl leading-[72px] font-bold tracking-[-1.2px] text-gray-900;
+    @apply mt-4 text-6xl leading-[72px] font-bold tracking-[-1.2px] text-gray-900 dark:text-white;
   }
 
   .section-text {
-    @apply text-secondary text-[32px] font-semibold;
+    @apply text-secondary  dark:text-white text-[32px] font-semibold;
   }
 
   .small-text {
@@ -33,11 +33,11 @@
   }
 
   .paragraph-text {
-    @apply text-xl leading-[30px] text-gray-600;
+    @apply text-xl leading-[30px] text-gray-600 dark:text-gray-400;
   }
 
   .hero-carousel {
-    @apply relative sm:px-10 py-5 sm:pt-20 pb-5 max-w-[450px] max-h-[600px] w-full bg-gray-400 rounded-[30px] sm:mx-auto;
+    @apply relative sm:px-10 py-5 sm:pt-20 pb-5 max-w-[450px] max-h-[600px] w-full bg-gray-400 dark:bg-gray-700 rounded-[30px] sm:mx-auto;
   }
 
   .carousel {
@@ -74,7 +74,7 @@
   }
 
   .product-btn {
-    @apply flex items-center gap-2 px-3 py-2 bg-white-200 rounded-10 hover:bg-opacity-50;
+    @apply flex items-center gap-2 px-3 py-2 bg-white-200 dark:bg-gray-800 dark:text-white rounded-10 dark:hover:bg-opacity-50  hover:bg-opacity-50;
   }
 
   .product-stars {
@@ -91,19 +91,19 @@
   }
 
   .dialog-content {
-    @apply p-6  bg-white inline-block w-full max-w-md my-8 overflow-hidden text-left align-middle transition-all transform  shadow-xl rounded-2xl;
+    @apply  p-6 dark:bg-gray-800  bg-white inline-block w-full max-w-md my-8 overflow-hidden text-left align-middle transition-all transform  shadow-xl rounded-2xl;
   }
 
   .dialog-head_text {
-    @apply text-secondary text-lg leading-[24px] font-semibold mt-4;
+    @apply text-secondary dark:text-white text-lg leading-[24px] font-semibold mt-4;
   }
 
   .dialog-input_container {
-    @apply px-5 py-3 mt-3 flex items-center gap-2 border border-gray-300 rounded-[27px];
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
   }
 
   .dialog-input {
-    @apply flex-1 pl-1 border-none text-gray-500 text-base focus:outline-none border border-gray-300 rounded-[27px] shadow-xs;
+    @apply flex-1 pl-1 border-none text-gray-500 text-base focus:outline-none rounded-[27px] shadow-xs;
   }
 
   .dialog-btn {
@@ -116,17 +116,17 @@
   }
 
   .nav-logo {
-    @apply font-spaceGrotesk text-[21px]  dark:text-secondary font-bold;
+    @apply font-spaceGrotesk text-[21px] dark:text-white  text-secondary font-bold;
   }
 
   /* PRICE INFO */
   .price-info_card {
-    @apply flex-1 min-w-[200px] flex flex-col gap-2 border-l-[3px] rounded-10 bg-white-100 px-5 py-4;
+    @apply flex-1 min-w-[200px] flex flex-col gap-2 border-l-[3px] rounded-10 bg-white-100 dark:bg-gray-800 px-5 py-4;
   }
 
   /* PRODUCT CARD */
   .product-card {
-    @apply sm:w-[292px] sm:max-w-[292px] w-full flex-1 flex flex-col gap-4 rounded-md border p-5  border-secondary hover:opacity-80;
+    @apply sm:w-[292px] sm:max-w-[292px] w-full flex-1 flex flex-col gap-2 rounded-3xl bg-neutral-400 dark:bg-neutral-800 p-3 hover:opacity-80;
   }
 
   .product-card_img-container {
@@ -138,7 +138,7 @@
   }
 
   .product-title {
-    @apply text-secondary text-xl leading-6 font-semibold truncate;
+    @apply text-secondary dark:text-white text-xl leading-6 font-semibold truncate;
   }
 
   .searchbar-input {

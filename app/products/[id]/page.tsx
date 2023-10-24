@@ -37,7 +37,7 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
 
                 <div className="flex-1 flex flex-col">
                     <div className="flex justify-between items-start gap-5 flex-wrap pb-6">
-                        <p className="text-[28px] text-secondary font-semibold">
+                        <p className="text-[28px] text-secondary dark:text-white font-semibold">
                             {product.title}
                         </p>
 
@@ -46,7 +46,7 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
                                 <Link
                                     href={product.url}
                                     target="_blank"
-                                    className="text-base text-black flex items-center justify-center gap-3"
+                                    className="text-base flex items-center justify-center gap-3"
                                 >
                                     <Image
                                         src="/assets/icons/logo.svg"
@@ -73,28 +73,19 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
                                     buttonStyle=""
                                 />
                             </div>
-
-                            <div className="p-2 bg-white-200 rounded-10 hover:opacity-50 cursor-pointer">
-                                <Image
-                                    src="/assets/icons/share.svg"
-                                    alt="share"
-                                    width={20}
-                                    height={20}
-                                />
-                            </div>
                         </div>
                     </div>
 
                     <div className="product-info">
                         <div className="flex flex-col gap-2">
-                            <p className="text-[34px] text-secondary font-bold">
+                            <p className="text-[34px] text-secondary dark:text-white font-bold">
                                 {product.currency} {formatNumber(product.currentPrice)}
                             </p>
                         </div>
 
 
                         <div className="flex flex-row gap-4 align-top">
-                            <p className="text-[21px] text-black opacity-50 line-through">
+                            <p className="text-[21px] text-black dark:text-white opacity-50 line-through">
                                 {product.currency} {formatNumber(product.originalPrice)}
                             </p>
                             <p>
@@ -134,7 +125,7 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
 
             {similarProducts && similarProducts?.length > 0 && (
                 <div className="py-14 flex flex-col gap-2 w-full">
-                    <p className="section-text">Products With <span className="text-primary-green">Similar</span> Or <span className="text-primary">Lower</span> Prices</p>
+                    <p className="section-text">Products With <span className="text-primary-green">Similar Or Lower</span> Prices</p>
                     <hr />
 
                     <div className="flex flex-wrap gap-10 mt-7 w-full">

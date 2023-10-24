@@ -62,7 +62,7 @@ const TextModal: FC<props> = ({ title, bodytext, buttonText, buttonStyle }) => {
                             <div className="dialog-content">
                                 <div className="flex flex-col">
                                     <div className="flex justify-between">
-                                        <div className="p-3 border border-gray-200 rounded-10">
+                                        <div className="p-3 rounded-10">
                                             <Image
                                                 src="/assets/icons/description.svg"
                                                 alt="Description Icon"

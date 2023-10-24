@@ -31,7 +31,7 @@ const Home: React.FC = async () => {
           <p className="section-text"><span className="text-primary">Latest</span> Products</p>
           <hr />
 
-          <div className="flex flex-wrap gap-10 mt-5 w-full">
+          <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-15 gap-y-20 mt-5 w-full">
             {allProducts?.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}
