@@ -12,7 +12,7 @@ const Home: React.FC = async () => {
         <div className="flex max-xl:flex-col gap-20">
           <div className="flex flex-col justify-center">
             <h1 className="head-text">
-              Unleash the Power of
+              Track products with
               <span className="text-primary"> Scrapping</span>
             </h1>
 

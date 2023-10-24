@@ -6,11 +6,9 @@ import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 
 const heroImages = [
-    { imgUrl: "/assets/images/hero-1.jpg", alt: "smartwatch" },
-    { imgUrl: "/assets/images/hero-2.jpg", alt: "bag" },
-    { imgUrl: "/assets/images/hero-1.jpg", alt: "lamp" },
-    { imgUrl: "/assets/images/hero-2.jpg", alt: "air fryer" },
-    { imgUrl: "/assets/images/hero-1.jpg", alt: "chair" },
+    { imgUrl: "/assets/images/hero-1.svg", alt: "smartwatch" },
+    { imgUrl: "/assets/images/hero-2.svg", alt: "lamp" },
+    { imgUrl: "/assets/images/hero-3.svg", alt: "chair" },
 ];
 
 
@@ -21,8 +19,9 @@ const ImageCarousel = () => {
                 showThumbs={false}
                 autoPlay
                 infiniteLoop
-                showArrows
+                showArrows={false}
                 showStatus={false}
+                showIndicators={false}
                 interval={1000}
             >
                 {heroImages.map((image) => (
