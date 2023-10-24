@@ -1,5 +1,6 @@
 import { getProductById, getSimilarPricedProducts } from "@/lib/actions/products";
 
+import EmailModal from "@/Components/Product/EmailModal";
 import Image from "next/image";
 import Link from "next/link";
 import PriceCard from "@/Components/Product/PriceCard";
@@ -17,7 +18,7 @@ interface props {
 const ProductDetailsPage: React.FC<props> = async ({ params }) => {
     const product: ProductType | null = await getProductById(params.id);
 
-    if (!product || product == null) redirect("/");
+    if (typeof product === "undefined" || product === null) redirect("/");
 
     const similarProducts = await getSimilarPricedProducts(params.id);
 
@@ -125,6 +126,8 @@ const ProductDetailsPage: React.FC<props> = async ({ params }) => {
                                 value={`${product.currency} ${formatNumber(product.lowestPrice)}`}
                             />
                         </div>
+
+                        <EmailModal productId={params.id} />
                     </div>
                 </div>
             </div>
