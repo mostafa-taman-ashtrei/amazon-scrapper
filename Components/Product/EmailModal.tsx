@@ -127,6 +127,7 @@ const EmailModal: FC<props> = ({ productId }) => {
                                             type="email"
                                             className="dialog-input_container"
                                             placeholder="johndoe@whatever.com"
+                                            onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
 
